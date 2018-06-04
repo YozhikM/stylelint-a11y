@@ -1,11 +1,12 @@
 # stylelint-a11y
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+[![Build Status](https://travis-ci.org/YozhikM/stylelint-a11y.svg?branch=master)](https://travis-ci.org/YozhikM/stylelint-a11y)
 
 ## Installation and usage
 
 ```bash
-yarn add stylelint stylelint-a11y
+yarn add --dev stylelint stylelint-a11y
 ```
 
 Create the `.stylelintrc.json` config file (or open the existing one), add `stylelint-a11y` to the plugins array and the rules you need to the rules list. All rules from stylelint-a11y need to be namespaced with `a11y`.
@@ -17,7 +18,7 @@ Create the `.stylelintrc.json` config file (or open the existing one), add `styl
   ],
   "rules": {
     "a11y/selector-pseudo-class-focus": true,
-    ...
+    "a11y/media-prefers-reduced-motion": true,
   }
 }
 ```
