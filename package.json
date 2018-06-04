@@ -1,0 +1,52 @@
+{
+  "name": "stylelint-a11y",
+  "version": "1.0.0",
+  "description": "Plugin for stylelint with a11y rules",
+  "main": "dist/index.js",
+  "repository": "https://github.com/YozhikM/stylelint-a11y.git",
+  "author": "Stanislav <botev.st@gmail.com>",
+  "license": "MIT",
+  "keywords": ["stylelint", "stylelint-plugin", "a11y"],
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "babel src --out-dir dist",
+    "lint": "eslint . --ignore-path .gitignore",
+    "prettify": "prettier --write src/**/*",
+    "prepublish": "yarn build",
+    "pretest": "yarn lint",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "dependencies": {
+    "stylelint": "^9.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-jest": "^23.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-stylelint": "^8.1.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flow-bin": "^0.73.0",
+    "jest": "^23.1.0",
+    "jest-cli": "^23.1.0",
+    "lodash": "^4.17.10",
+    "prettier": "^1.13.4",
+    "stylelint-test-rule-tape": "^0.2.0"
+  }
+}
