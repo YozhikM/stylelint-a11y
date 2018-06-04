@@ -11,23 +11,56 @@ Safari 10.1 [introduced](https://webkit.org/blog/7551/responsive-design-for-moti
 The following pattern are considered violations:
 
 ```css
-    .foo { transition: none }
+.foo {
+  transition: none;
+}
 ```
 
 ```css
-    .bar { animation: none } .baz { transition: none } @media screen and (prefers-reduced-motion) { .baz { transition: none } }
+.bar {
+  animation: none;
+}
+.baz {
+  transition: none;
+}
+@media screen and (prefers-reduced-motion) {
+  .baz {
+    transition: none;
+  }
+}
 ```
 
 ```css
-    .foo { animation: none } @media screen and (prefers-reduced-motion) { .foo { transition: none } }
+.foo {
+  animation: none;
+}
+@media screen and (prefers-reduced-motion) {
+  .foo {
+    transition: none;
+  }
+}
 ```
 
-The following patterns are *not* considered violations:
+The following patterns are _not_ considered violations:
 
 ```css
-    .foo { transition: none } @media screen and (prefers-reduced-motion: reduce) { .foo { transition: none } }
+.foo {
+  transition: none;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .foo {
+    transition: none;
+  }
+}
 ```
 
 ```css
-     .bar { animation: none } @media screen and (prefers-reduced-motion) { .bar { animation: none } }
+.bar {
+  animation: none;
+}
+@media screen and (prefers-reduced-motion) {
+  .bar {
+    animation: none;
+  }
+}
 ```
