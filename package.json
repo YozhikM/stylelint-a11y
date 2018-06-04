@@ -6,7 +6,11 @@
   "repository": "https://github.com/YozhikM/stylelint-a11y.git",
   "author": "Stanislav <botev.st@gmail.com>",
   "license": "MIT",
-  "keywords": ["stylelint", "stylelint-plugin", "a11y"],
+  "keywords": [
+    "stylelint",
+    "stylelint-plugin",
+    "a11y"
+  ],
   "engines": {
     "node": ">=6"
   },
@@ -16,7 +20,7 @@
     "lint": "eslint . --ignore-path .gitignore",
     "prettify": "prettier --write src/**/*",
     "prepublish": "yarn build",
-    "pretest": "yarn lint",
+    "pretest": "yarn lint --fix",
     "test": "jest",
     "coverage": "jest --coverage"
   },
@@ -36,7 +40,6 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-jest": "^23.0.1",
     "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-stylelint": "^8.1.0",
     "eslint-plugin-flowtype": "^2.49.3",

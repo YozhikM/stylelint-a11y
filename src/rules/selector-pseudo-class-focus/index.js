@@ -1,8 +1,12 @@
-/* @flow */
-
 import { utils } from 'stylelint';
+import {
+  isStandardSyntaxRule,
+  isStandardSyntaxSelector,
+  isStandardSyntaxAtRule,
+  isCustomSelector,
+} from '../../utils';
 
-export const ruleName = 'selector-pseudo-class-focus';
+export const ruleName = 'a11y/selector-pseudo-class-focus';
 
 export const messages = utils.ruleMessages(ruleName, {
   expected: value => `Expected that ${value} is used together with :focus pseudo-class`,
@@ -17,18 +21,18 @@ function check(selector) {
     return true;
   }
 
-  if (!utils.isStandardSyntaxSelector(selector)) {
+  if (!isStandardSyntaxSelector(selector)) {
     return true;
   }
 
-  if (utils.isCustomSelector(selector)) {
+  if (isCustomSelector(selector)) {
     return true;
   }
 
   return false;
 }
 
-export default function(actual: boolean) {
+export default function(actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -40,13 +44,13 @@ export default function(actual: boolean) {
       let selector = null;
 
       if (node.type === 'rule') {
-        if (!utils.isStandardSyntaxRule(node)) {
+        if (!isStandardSyntaxRule(node)) {
           return;
         }
 
         selector = node.selector;
       } else if (node.type === 'atrule' && node.name === 'page' && node.params) {
-        if (!utils.isStandardSyntaxAtRule(node)) {
+        if (!isStandardSyntaxAtRule(node)) {
           return;
         }
 

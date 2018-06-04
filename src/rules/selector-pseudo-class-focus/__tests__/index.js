@@ -1,7 +1,4 @@
-/* @flow */
-
-const rule = require('..');
-const { messages, ruleName } = rule;
+import rule, { messages, ruleName } from '../index';
 
 testRule(rule, {
   ruleName,
