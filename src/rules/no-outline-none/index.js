@@ -1,9 +1,10 @@
 import { utils } from 'stylelint';
+import { isStandardSyntaxRule } from '../../utils';
 
 export const ruleName = 'a11y/no-outline-none';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: value => `Unexpected using "outline" property in ${value}`,
+  expected: selector => `Unexpected using "outline" property in ${selector}`,
 });
 
 function check(node) {
@@ -11,12 +12,12 @@ function check(node) {
     return true;
   }
 
-  const hasOutlineNone = node.nodes.some(
-    o => o.type === 'decl' && o.prop === 'outline' && ['0', 'none'].indexOf(o.value) >= 0
+  return !node.nodes.some(
+    o =>
+      o.type === 'decl' &&
+      o.prop.toLowerCase() === 'outline' &&
+      ['0', 'none'].indexOf(o.value.toLowerCase()) >= 0
   );
-  if (hasOutlineNone) return false;
-
-  return true;
 }
 
 export default function(actual) {
@@ -31,8 +32,11 @@ export default function(actual) {
       let selector = null;
 
       if (node.type === 'rule') {
+        if (!isStandardSyntaxRule(node)) {
+          return;
+        }
         selector = node.selector;
-      } else if (node.type === 'atrule' && node.name === 'page' && node.params) {
+      } else if (node.type === 'atrule' && node.name.toLowerCase() === 'page' && node.params) {
         selector = node.params;
       }
 

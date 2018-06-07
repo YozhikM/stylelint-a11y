@@ -8,6 +8,9 @@ testRule(rule, {
     {
       code: '.foo { outline: 1px solid #666; }',
     },
+    {
+      code: '$primary-color: #333; .bar { outline: 1px solid $primary-color; }',
+    },
   ],
 
   reject: [
@@ -28,6 +31,12 @@ testRule(rule, {
       message: messages.expected('.baz'),
       line: 1,
       column: 4,
+    },
+    {
+      code: '.quux { .quuux { outline: 0; } }',
+      message: messages.expected('.quuux'),
+      line: 1,
+      column: 12,
     },
   ],
 });
