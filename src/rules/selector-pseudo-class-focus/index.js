@@ -1,10 +1,8 @@
 import { utils } from 'stylelint';
-import {
-  isStandardSyntaxRule,
-  isStandardSyntaxSelector,
-  isStandardSyntaxAtRule,
-  isCustomSelector,
-} from '../../utils';
+import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
+import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector';
+import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule';
+import isCustomSelector from 'stylelint/lib/utils/isCustomSelector';
 
 export const ruleName = 'a11y/selector-pseudo-class-focus';
 

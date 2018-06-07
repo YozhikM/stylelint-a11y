@@ -1,5 +1,5 @@
 import { utils } from 'stylelint';
-import { isStandardSyntaxRule } from '../../utils';
+import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 
 export const ruleName = 'a11y/no-outline-none';
 
