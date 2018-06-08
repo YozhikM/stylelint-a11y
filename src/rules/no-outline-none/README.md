@@ -4,10 +4,11 @@ Disallow outline clearing.
 
 Why? [Because](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-focus-visible)
 
-**Sources**:
-[DON'T DO IT!](http://www.outlinenone.com/)
-[a11yproject](https://a11yproject.com/posts/never-remove-css-outlines/)
-[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/outline)
+**Sources:**
+
+- [DON'T DO IT!](http://www.outlinenone.com/)
+- [a11yproject](https://a11yproject.com/posts/never-remove-css-outlines/)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/outline)
 
 ## Options
 
