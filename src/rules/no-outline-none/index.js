@@ -7,17 +7,32 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Unexpected using "outline" property in ${selector}`,
 });
 
-function check(node) {
+function check(selector, node) {
   if (node.type !== 'rule') {
     return true;
   }
 
-  return !node.nodes.some(
+  if (!selector.match(/:focus/gi)) {
+    return true;
+  }
+
+  const hasEmptyOutline = node.nodes.some(
     o =>
       o.type === 'decl' &&
       o.prop.toLowerCase() === 'outline' &&
       ['0', 'none'].indexOf(o.value.toLowerCase()) >= 0
   );
+
+  if (hasEmptyOutline) {
+    return node.nodes.some(
+      o =>
+        o.type === 'decl' &&
+        o.prop.toLowerCase() === 'border' &&
+        !o.value.toLowerCase().match(/transparent/gi)
+    );
+  }
+
+  return true;
 }
 
 export default function(actual) {
@@ -44,7 +59,7 @@ export default function(actual) {
         return;
       }
 
-      const isAccepted = check(node);
+      const isAccepted = check(selector, node);
 
       if (!isAccepted) {
         utils.report({

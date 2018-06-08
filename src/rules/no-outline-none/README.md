@@ -19,20 +19,22 @@ The following pattern are considered violations:
 .foo1 {
   outline: none;
 }
-.foo2 {
+.foo2:focus {
   outline: 1px solid red;
 }
 ```
 
 ```css
-.bar {
+.bar:focus {
   outline: none;
 }
 ```
 
-```css
-.baz {
-  outline: 0;
+```scss
+.quux {
+  .quuux:focus {
+    outline: 0;
+  }
 }
 ```
 
@@ -40,6 +42,26 @@ The following patterns are _not_ considered violations:
 
 ```css
 .foo {
-  outline: 1px solid #666;
+  outline: 0;
+}
+```
+
+```scss
+$primary-color: #333;
+.bar:focus {
+  outline: 1px solid $primary-color;
+}
+```
+
+```css
+.baz:focus {
+  outline: 1px solid #333;
+}
+```
+
+```css
+.quux:focus {
+  outline: 0;
+  border: 1px solid #000;
 }
 ```
