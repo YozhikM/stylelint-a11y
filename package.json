@@ -17,11 +17,11 @@
   "scripts": {
     "precommit": "lint-staged",
     "prebuild": "rimraf dist",
-    "build": "babel src --out-dir dist",
+    "build": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\"",
+    "oldbuild": "babel src --out-dir dist",
     "lint": "eslint . --ignore-path .gitignore",
     "prettify": "prettier --write src/**/*",
     "prepublish": "yarn build",
-    "pretest": "yarn lint --fix",
     "test": "jest",
     "coverage": "jest --coverage"
   },
@@ -40,11 +40,14 @@
     "stylelint": "^8.0.0 || ^9.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-jest": "^23.0.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
@@ -54,9 +57,13 @@
     "jest": "^23.1.0",
     "jest-cli": "^23.1.0",
     "lodash": "^4.17.10",
+    "postcss": "^6.0.22",
     "prettier": "^1.13.4",
     "rimraf": "^2.6.2",
     "stylelint": "^9.2.1",
-    "stylelint-test-rule-tape": "^0.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-test-rule-tape": "^0.2.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^2.9.1"
   }
 }

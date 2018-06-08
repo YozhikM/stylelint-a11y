@@ -1,7 +1,7 @@
 module.exports = {
   clearMocks: true,
   collectCoverage: false,
-  collectCoverageFrom: ['src/**/*.js'],
+  collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: './.coverage/',
   coverageReporters: ['lcov', 'text'],
   coverageThreshold: {
@@ -15,5 +15,9 @@ module.exports = {
   setupFiles: ['./jest.setup.js'],
   testEnvironment: 'node',
   roots: ['src'],
-  testRegex: '.*\\.test\\.js$|src/.*/__tests__/.*\\.js$',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$',
+  transform: {
+    '^.+\\.ts?$': 'ts-jest',
+  },
+  moduleFileExtensions: ['ts', 'js'],
 };

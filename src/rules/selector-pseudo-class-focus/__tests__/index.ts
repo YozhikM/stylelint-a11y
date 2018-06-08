@@ -1,6 +1,8 @@
 import rule, { messages, ruleName } from '../index';
 
-testRule(rule, {
+const globalAny: any = global;
+
+globalAny.testRule(rule, {
   ruleName,
   config: [true],
 
