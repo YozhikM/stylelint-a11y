@@ -72,3 +72,15 @@ $primary-color: #333;
   border: 1px solid #000;
 }
 ```
+
+## Note
+
+[Similar rule](https://github.com/stylelint/stylelint/blob/master/lib/rules/declaration-property-value-blacklist/README.md) is in [Stylelint](https://github.com/stylelint/stylelint), but it triggers another error message and does not check for `:focus` selector and `border` property.
+
+```json
+{
+  "declaration-property-value-blacklist": {
+    "outline": ["none", "0"]
+  }
+}
+```
