@@ -17,11 +17,8 @@ Why? [Because](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechan
 The following pattern are considered violations:
 
 ```css
-.foo1 {
-  outline: none;
-}
-.foo2:focus {
-  outline: 1px solid red;
+.foo:focus {
+  outline: 0;
 }
 ```
 
