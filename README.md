@@ -29,7 +29,8 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 - [`selector-pseudo-class-focus`](./src/rules/selector-pseudo-class-focus/README.md): Require or disallow a pseudo-element to the selectors with :hover
 - [`media-prefers-reduced-motion`](./src/rules/media-prefers-reduced-motion/README.md): Require certain styles if the animation or transition in media features
-- [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing.
+- [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing
+- [`no-display-none`](./src/rules/no-display-none/README.md): Disallow content hiding with `{ display: none; }` property.
 
 ## Help out
 
