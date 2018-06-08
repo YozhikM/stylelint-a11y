@@ -30,6 +30,13 @@ The following pattern are considered violations:
 }
 ```
 
+```css
+.baz:focus {
+  outline: none;
+  border: transparent;
+}
+```
+
 ```scss
 .quux {
   .quuux:focus {

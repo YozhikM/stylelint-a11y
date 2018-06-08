@@ -33,6 +33,12 @@ testRule(rule, {
       column: 4,
     },
     {
+      code: '.baz:focus { outline: none; border: transparent; }',
+      message: messages.expected('.baz:focus'),
+      line: 1,
+      column: 4,
+    },
+    {
       code: '.quux { .quuux:focus { outline: 0; } }',
       message: messages.expected('.quuux:focus'),
       line: 1,
