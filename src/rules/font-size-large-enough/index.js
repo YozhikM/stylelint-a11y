@@ -12,15 +12,11 @@ function check(selector, node) {
     return true;
   }
 
-  const checkInPx = value => parseFloat(value) >= 15;
-
-  const valueInPx = value => value.toLowerCase().endsWith('px');
-
   const result = node.nodes.some(
     o =>
       o.type === 'decl' &&
       o.prop.toLowerCase() === 'font-size' &&
-      (!valueInPx(o.value) || checkInPx(o.value))
+      (!o.value.toLowerCase().endsWith('px') || parseFloat(o.value) >= 15)
   );
 
   return result;
