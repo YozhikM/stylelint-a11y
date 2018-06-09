@@ -1,16 +1,12 @@
 {
   "name": "stylelint-a11y",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Plugin for stylelint with a11y rules",
   "main": "dist/index.js",
   "repository": "https://github.com/YozhikM/stylelint-a11y.git",
   "author": "Stanislav <botev.st@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "stylelint",
-    "stylelint-plugin",
-    "a11y"
-  ],
+  "keywords": ["stylelint", "stylelint-plugin", "a11y"],
   "engines": {
     "node": ">=6"
   },
@@ -31,10 +27,7 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "**/*.{js,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "**/*.{js,json}": ["prettier --write", "git add"]
   },
   "peerDependencies": {
     "stylelint": "^8.0.0 || ^9.0.0"
