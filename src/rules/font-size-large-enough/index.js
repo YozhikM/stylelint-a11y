@@ -12,14 +12,12 @@ function check(node) {
     return true;
   }
 
-  const result = node.nodes.some(
+  return node.nodes.some(
     o =>
       o.type === 'decl' &&
       o.prop.toLowerCase() === 'font-size' &&
       (!o.value.toLowerCase().endsWith('px') || parseFloat(o.value) >= 15)
   );
-
-  return result;
 }
 
 export default function(actual) {
