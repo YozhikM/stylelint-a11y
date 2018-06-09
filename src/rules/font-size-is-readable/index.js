@@ -1,7 +1,7 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 
-export const ruleName = 'a11y/font-size-large-enough';
+export const ruleName = 'a11y/font-size-is-readable';
 
 export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Expected a larger "font-size" in ${selector}`,
