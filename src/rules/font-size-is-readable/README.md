@@ -1,6 +1,6 @@
 # font-size-large-enough
 
-Disallow font sizes less 15px.
+Disallow font sizes less than 15px.
 
 **Sources:**
 
@@ -31,3 +31,4 @@ The following patterns are _not_ considered violations:
 .foo {
   font-size: 1em;
 }
+```

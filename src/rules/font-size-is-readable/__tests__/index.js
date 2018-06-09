@@ -9,10 +9,10 @@ testRule(rule, {
       code: '.foo { font-size: 15px; }',
     },
     {
-      code: '.foo { FONT-SIZE: 15PX; }',
+      code: '.bar { FONT-SIZE: 15PX; }',
     },
     {
-      code: '.foo { font-size: 1em; }',
+      code: '.baz { font-size: 1em; }',
     },
   ],
 
@@ -24,8 +24,8 @@ testRule(rule, {
       column: 4,
     },
     {
-      code: '.foo { FONT-SIZE: 8PX; }',
-      message: messages.expected('.foo'),
+      code: '.bar { FONT-SIZE: 8PX; }',
+      message: messages.expected('.bar'),
       line: 1,
       column: 4,
     },
