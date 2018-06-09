@@ -7,7 +7,7 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Expected a larger "font-size" in ${selector}`,
 });
 
-function check(selector, node) {
+function check(node) {
   if (node.type !== 'rule') {
     return true;
   }
@@ -46,7 +46,7 @@ export default function(actual) {
         return;
       }
 
-      const isAccepted = check(selector, node);
+      const isAccepted = check(node);
 
       if (!isAccepted) {
         utils.report({
