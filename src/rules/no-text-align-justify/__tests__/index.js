@@ -6,34 +6,34 @@ testRule(rule, {
 
   accept: [
     {
-      code: '.foo { font-align: center; }',
+      code: '.foo { text-align: center; }',
     },
     {
-      code: '.foo { font-align: left; }',
+      code: '.foo { text-align: left; }',
     },
     {
-      code: '.foo { font-align: right; }',
+      code: '.foo { text-align: right; }',
     },
     {
-      code: '.foo { font-align: start; }',
+      code: '.foo { text-align: start; }',
     },
     {
-      code: '.foo { font-align: end; }',
+      code: '.foo { text-align: end; }',
     },
     {
-      code: '.foo { FONT-ALIGN: CENTER; }',
+      code: '.foo { TEXT-ALIGN: CENTER; }',
     },
   ],
 
   reject: [
     {
-      code: '.foo { font-align: justify; }',
+      code: '.foo { text-align: justify; }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,
     },
     {
-      code: '.foo { FONT-ALIGN: JUSTIFY; }',
+      code: '.foo { TEXT-ALIGN: JUSTIFY; }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,

@@ -1,6 +1,6 @@
-# justify
+# no-text-align-justify
 
-Disallow `{ font-align: justify; }` anywhere.
+Disallow `{ text-align: justify; }` anywhere.
 
 **Sources:**
 
@@ -15,7 +15,7 @@ The following pattern are considered violations:
 
 ```css
 .foo {
-  font-align: justify;
+  text-align: justify;
 }
 ```
 
@@ -23,30 +23,30 @@ The following patterns are _not_ considered violations:
 
 ```css
 .foo {
-  font-align: center;
+  text-align: center;
 }
 ```
 
 ```css
 .foo {
-  font-align:  left;
+  text-align:  left;
 }
 ```
 
 ```css
 .foo {
-  font-align:  right;
+  text-align:  right;
 }
 ```
 
 ```css
 .foo {
-  font-align: start;
+  text-align: start;
 }
 ```
 
 ```css
 .foo {
-  font-align: end;
+  text-align: end;
 }
 ```

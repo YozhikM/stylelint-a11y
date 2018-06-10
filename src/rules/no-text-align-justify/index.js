@@ -4,7 +4,7 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/no-text-align-justify';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using "{ font-align: justify; }" in ${selector}`,
+  expected: selector => `Unexpected using "{ text-align: justify; }" in ${selector}`,
 });
 
 function check(node) {
@@ -15,7 +15,7 @@ function check(node) {
   return !node.nodes.some(
     o =>
       o.type === 'decl' &&
-      o.prop.toLowerCase() === 'font-align' &&
+      o.prop.toLowerCase() === 'text-align' &&
       o.value.toLowerCase() === 'justify'
   );
 }
