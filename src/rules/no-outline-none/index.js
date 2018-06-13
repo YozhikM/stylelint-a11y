@@ -27,7 +27,7 @@ function check(selector, node) {
     return node.nodes.some(
       o =>
         o.type === 'decl' &&
-        o.prop.toLowerCase() === 'border' &&
+        ['border', 'border-color', 'box-shadow'].indexOf(o.prop.toLowerCase()) >= 0 &&
         !o.value.toLowerCase().match(/transparent/gi)
     );
   }
