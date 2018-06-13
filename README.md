@@ -17,8 +17,9 @@ Create the `.stylelintrc.json` config file (or open the existing one), add `styl
   "rules": {
     "a11y/font-size-is-readable": true,
     "a11y/media-prefers-reduced-motion": true,
-    "a11y/no-outline-none": true,
     "a11y/no-display-none": [true, { "severity": "warning" }],
+    "a11y/no-obsolete-element": true,
+    "a11y/no-outline-none": true,
     "a11y/selector-pseudo-class-focus": true
   }
 }
@@ -28,10 +29,11 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 ## List of rules
 
-- [`font-size-is-readable`](./src/rules/font-size-is-readable/README.md): Disallow font sizes less 15px
+- [`font-size-is-readable`](./src/rules/font-size-is-readable/README.md): Disallow font sizes less than 15px
 - [`media-prefers-reduced-motion`](./src/rules/media-prefers-reduced-motion/README.md): Require certain styles if the animation or transition in media features
-- [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing
 - [`no-display-none`](./src/rules/no-display-none/README.md): Disallow content hiding with `{ display: none; }` property.
+- [`no-obsolete-element`](./src/rules/no-obsolete-element/README.md): Disallow obsolete selectors using.
+- [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing
 - [`selector-pseudo-class-focus`](./src/rules/selector-pseudo-class-focus/README.md): Require or disallow a pseudo-element to the selectors with :hover
 
 ## Help out
