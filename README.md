@@ -29,11 +29,11 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 ## List of rules
 
-- [`font-size-is-readable`](./src/rules/font-size-is-readable/README.md): Disallow font sizes less 15px
+- [`font-size-is-readable`](./src/rules/font-size-is-readable/README.md): Disallow font sizes less than 15px
 - [`media-prefers-reduced-motion`](./src/rules/media-prefers-reduced-motion/README.md): Require certain styles if the animation or transition in media features
 - [`no-display-none`](./src/rules/no-display-none/README.md): Disallow content hiding with `{ display: none; }` property.
 - [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing
-- [`no-text-align-justify`]('./src/rules/no-text-align-justify/README.md): Disallow content with `{ font-align: justify; }`
+- [`no-text-align-justify`]('./src/rules/no-text-align-justify/README.md): Disallow content with `{ text-align: justify; }`
 - [`selector-pseudo-class-focus`](./src/rules/selector-pseudo-class-focus/README.md): Require or disallow a pseudo-element to the selectors with :hover
 
 ## Help out
