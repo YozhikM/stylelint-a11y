@@ -11,6 +11,8 @@ export const messages = utils.ruleMessages(ruleName, {
 });
 
 function check(selector) {
+  if (!selector) return;
+
   if (
     selector.match(/:focus/gi) ||
     (selector.match(/:hover/gi) && selector.match(/:focus/gi)) ||
