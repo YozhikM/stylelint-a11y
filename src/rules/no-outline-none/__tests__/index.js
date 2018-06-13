@@ -12,10 +12,13 @@ testRule(rule, {
       code: '$primary-color: #333; .bar:focus { outline: 1px solid $primary-color; }',
     },
     {
-      code: '.baz:focus { outline: 1px solid #333; }',
+      code: '.baz:focus { outline: none; border-color: #333; }',
     },
     {
       code: '.quux:focus { outline: 0; border: 1px solid #000; }',
+    },
+    {
+      code: '.quuux:focus { outline: none; box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }',
     },
   ],
 
