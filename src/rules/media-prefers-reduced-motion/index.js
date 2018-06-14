@@ -40,6 +40,7 @@ function check(selector, node) {
 
   if (declarationsIsMatched) {
     const parentMatchedNode = parentNodes.some(parentNode => {
+      if (!parentNode || !parentNode.nodes) return;
       return parentNode.nodes.some(childrenNode => {
         const childrenNodes = childrenNode.nodes;
 
