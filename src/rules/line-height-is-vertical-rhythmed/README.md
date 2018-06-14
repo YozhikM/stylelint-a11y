@@ -1,4 +1,4 @@
-# line-height-is-clear
+# line-height-is-vertical-rhythmed
 
 Disallow line heights less than 1.5 or is not a multiple of 24px.
 

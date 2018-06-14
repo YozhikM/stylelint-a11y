@@ -1,7 +1,7 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 
-export const ruleName = 'a11y/line-height-is-clear';
+export const ruleName = 'a11y/line-height-is-vertical-rhythmed';
 
 export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Expected a clear "line-height" in ${selector}`,
