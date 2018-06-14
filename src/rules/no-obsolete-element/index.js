@@ -12,10 +12,8 @@ function check(selector, node) {
   if (node.type !== 'rule') {
     return true;
   }
-  if (obsoleteElements.has(selector)) {
-    return false;
-  }
-  return true;
+
+  return !obsoleteElements.has(selector);
 }
 
 export default function(actual) {
