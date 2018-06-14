@@ -17,6 +17,12 @@ testRule(rule, {
     {
       code: '.smallTextU { LINE-HEIGHT: 24PX; }',
     },
+    {
+      code: 'body { font-size: 15px; line-height: 48px; }',
+    },
+    {
+      code: 'a { font-size: 15px; line-height: 1.6; }',
+    },
   ],
 
   reject: [
@@ -47,6 +53,18 @@ testRule(rule, {
     {
       code: '.foo { LINE-HEIGHT: 23PX; }',
       message: messages.expected('.foo'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code: 'p { font-size: 23px; line-height: 23px; }',
+      message: messages.expected('p'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code: 'a { font-size: 24px; line-height: 1; }',
+      message: messages.expected('a'),
       line: 1,
       column: 4,
     },
