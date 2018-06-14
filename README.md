@@ -30,7 +30,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 ## List of rules
 
 - [`font-size-is-readable`](./src/rules/font-size-is-readable/README.md): Disallow font sizes less than 15px.
-- [`line-height-is-vertical-rhythmed`](./src/rules/line-height-is-vertical-rhythmed/README.md): Disallow line heights less than 1.5 or is not a multiple of 24px.
+- [`line-height-is-vertical-rhythmed`](./src/rules/line-height-is-vertical-rhythmed/README.md): Disallow not vertical rhythmed line-height.
 - [`media-prefers-reduced-motion`](./src/rules/media-prefers-reduced-motion/README.md): Require certain styles if the animation or transition in media features.
 - [`no-display-none`](./src/rules/no-display-none/README.md): Disallow content hiding with `{ display: none; }` property.
 - [`no-outline-none`](./src/rules/no-outline-none/README.md): Disallow outline clearing.
