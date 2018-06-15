@@ -6,6 +6,9 @@ testRule(rule, {
 
   accept: [
     {
+      code: '.foo { }',
+    },
+    {
       code: '.foo { font-size: 15px; }',
     },
     {
