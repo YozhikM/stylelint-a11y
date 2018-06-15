@@ -1,8 +1,5 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
-import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector';
-import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule';
-import isCustomSelector from 'stylelint/lib/utils/isCustomSelector';
 
 export const ruleName = 'a11y/selector-pseudo-class-focus';
 
@@ -10,26 +7,10 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: value => `Expected that ${value} is used together with :focus pseudo-class`,
 });
 
-function check(selector) {
-  if (!selector) return;
-
-  if (
-    selector.match(/:focus/gi) ||
-    (selector.match(/:hover/gi) && selector.match(/:focus/gi)) ||
-    (!selector.match(/:hover/gi) && !selector.match(/:focus/gi))
-  ) {
-    return true;
-  }
-
-  if (!isStandardSyntaxSelector(selector)) {
-    return true;
-  }
-
-  if (isCustomSelector(selector)) {
-    return true;
-  }
-
-  return false;
+function hasAlready(parent, selector) {
+  return parent.nodes.some(i => {
+    return i.type === 'rule' && i.selectors.indexOf(selector) !== -1;
+  });
 }
 
 export default function(actual) {
@@ -40,22 +21,14 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walkRules(rule => {
       let selector = null;
 
-      if (node.type === 'rule') {
-        if (!isStandardSyntaxRule(node)) {
-          return;
-        }
-
-        selector = node.selector;
-      } else if (node.type === 'atrule' && node.name === 'page' && node.params) {
-        if (!isStandardSyntaxAtRule(node)) {
-          return;
-        }
-
-        selector = node.params;
+      if (!isStandardSyntaxRule(rule)) {
+        return;
       }
+
+      selector = rule.selector;
 
       if (!selector) {
         return;
@@ -65,26 +38,21 @@ export default function(actual) {
         return;
       }
 
-      const parentNodes = node.parent.nodes;
-      let isAccepted = null;
-
-      if (parentNodes.length > 1) {
-        const checkParentNodes = parentNodes
-          .map(parentNode => {
-            return check(parentNode.selector);
-          })
-          .filter(Boolean);
-
-        isAccepted = !!checkParentNodes;
-      } else {
-        isAccepted = check(selector);
+      if (selector.indexOf(':hover') === -1) {
+        return;
       }
+
+      if (selector.indexOf(':hover') >= 0 && selector.indexOf(':focus') >= 0) {
+        return;
+      }
+
+      const isAccepted = hasAlready(rule.parent, selector.replace(/:hover/g, ':focus'));
 
       if (!isAccepted) {
         utils.report({
-          index: node.lastEach,
+          index: rule.lastEach,
           message: messages.expected(selector),
-          node,
+          node: rule,
           ruleName,
           result,
         });

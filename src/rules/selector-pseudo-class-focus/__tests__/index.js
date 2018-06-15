@@ -1,10 +1,13 @@
-import rule, { messages, ruleName } from '../index';
+import rule, { messages, ruleName } from '../index'; // eslint-disable-line
 
 testRule(rule, {
   ruleName,
   config: [true],
 
   accept: [
+    {
+      code: 'a { }',
+    },
     {
       code: 'a:focus { }',
     },
@@ -20,8 +23,18 @@ testRule(rule, {
     {
       code: 'a:hover { }',
       message: messages.expected('a:hover'),
-      line: 1,
-      column: 4,
+    },
+    {
+      code: 'a:hover { } b:hover { }',
+      message: messages.expected('a:hover'),
+    },
+    {
+      code: 'a:hover { } a:focus { } b:hover { } b { }',
+      message: messages.expected('b:hover'),
+    },
+    {
+      code: 'a:hover, a:focus { } b:hover { } b { }',
+      message: messages.expected('b:hover'),
     },
   ],
 });
