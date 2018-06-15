@@ -6,7 +6,11 @@
   "repository": "https://github.com/YozhikM/stylelint-a11y.git",
   "author": "Stanislav <botev.st@gmail.com>",
   "license": "MIT",
-  "keywords": ["stylelint", "stylelint-plugin", "a11y"],
+  "keywords": [
+    "stylelint",
+    "stylelint-plugin",
+    "a11y"
+  ],
   "engines": {
     "node": ">=6"
   },
@@ -27,7 +31,10 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "**/*.{js,json}": ["prettier --write", "git add"]
+    "**/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "stylelint": "^8.0.0 || ^9.0.0"
@@ -47,9 +54,9 @@
     "jest": "^23.1.0",
     "jest-cli": "^23.1.0",
     "lodash": "^4.17.10",
-    "prettier": "^1.13.4",
+    "prettier": "^1.13.5",
     "rimraf": "^2.6.2",
-    "stylelint": "^9.2.1",
+    "stylelint": "^9.3.0",
     "stylelint-test-rule-tape": "^0.2.0"
   }
 }
