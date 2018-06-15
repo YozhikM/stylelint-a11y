@@ -15,12 +15,13 @@ Create the `.stylelintrc.json` config file (or open the existing one), add `styl
 {
   "plugins": ["stylelint-a11y"],
   "rules": {
-    "a11y/font-size-is-readable": [true, { "severity": "warning" }],
     "a11y/media-prefers-reduced-motion": true,
-    "a11y/no-display-none": [true, { "severity": "warning" }],
     "a11y/no-outline-none": true,
     "a11y/no-text-align-justify": true,
-    "a11y/selector-pseudo-class-focus": true
+    "a11y/selector-pseudo-class-focus": true,
+    "a11y/font-size-is-readable": [true, { "severity": "warning" }],
+    "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
+    "a11y/no-display-none": [true, { "severity": "warning" }]
   }
 }
 ```

@@ -6,6 +6,9 @@ testRule(rule, {
 
   accept: [
     {
+      code: 'a { }',
+    },
+    {
       code: '.smallText { line-height: 24px; }',
     },
     {
