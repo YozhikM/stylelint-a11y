@@ -55,6 +55,7 @@ function check(selector, node) {
           const index = targetProperties.indexOf(declaration.prop);
 
           if (currentSelector !== targetProperties[index]) return false;
+          if (declaration.value !== 'none') return false;
 
           return index >= 0 && parentNode.params.indexOf('prefers-reduced-motion') >= 0;
         });

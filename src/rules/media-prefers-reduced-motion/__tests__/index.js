@@ -6,6 +6,9 @@ testRule(rule, {
 
   accept: [
     {
+      code: 'a { }',
+    },
+    {
       code:
         '.foo { transition: none } @media screen and (prefers-reduced-motion: reduce) { .foo { transition: none } }',
     },
@@ -32,6 +35,13 @@ testRule(rule, {
     {
       code:
         '.foo { animation: none } @media screen and (prefers-reduced-motion) { .foo { transition: none } }',
+      message: messages.expected('.foo'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code:
+        '.foo { animation: none } @media screen and (prefers-reduced-motion) { .foo { animation: 1s ease-in } }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,
