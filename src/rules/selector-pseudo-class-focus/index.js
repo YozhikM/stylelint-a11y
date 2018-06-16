@@ -50,12 +50,7 @@ export default function(actual, _, context) {
 
       if (context.fix && !isAccepted) {
         rule.parent.nodes.forEach(node => {
-          if (
-            node.type === 'rule' &&
-            node.selector.match(/:hover/gi) &&
-            !node.selector.match(/:focus/gi) &&
-            node.selector === selector
-          ) {
+          if (node.type === 'rule' && node.selector === selector) {
             node.selector = `${node.selector}, ${node.selector.replace(/:hover/g, ':focus')}`;
           }
         });
