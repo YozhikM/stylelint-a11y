@@ -13,7 +13,7 @@ function hasAlready(parent, selector) {
   });
 }
 
-export default function(actual) {
+export default function(actual, _, context) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -47,6 +47,14 @@ export default function(actual) {
       }
 
       const isAccepted = hasAlready(rule.parent, selector.replace(/:hover/g, ':focus'));
+
+      if (context.fix && !isAccepted) {
+        rule.parent.nodes.forEach(node => {
+          if (node.type === 'rule' && node.selector === selector) {
+            node.selector = `${node.selector}, ${node.selector.replace(/:hover/g, ':focus')}`;
+          }
+        });
+      }
 
       if (!isAccepted) {
         utils.report({
