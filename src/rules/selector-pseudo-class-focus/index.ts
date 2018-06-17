@@ -4,8 +4,10 @@ import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelect
 import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule';
 import isCustomSelector from 'stylelint/lib/utils/isCustomSelector';
 
-import { Root, Rule } from 'postcss';
-const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
+import { Root, Rule, Container, Result } from 'postcss';
+
+const deepFlatten = (arr: any[]) =>
+  [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
 
 export const ruleName = 'a11y/selector-pseudo-class-focus';
 
@@ -13,9 +15,12 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: value => `Expected that ${value} is used together with :focus pseudo-class`,
 });
 
-function hasAlready(parent, repalcedSelector, selector) {
+function hasAlready(parent: Container, repalcedSelector: string, selector: string) {
   const nodes = parent.nodes.map(i => {
-    if (i.type === 'rule') return i.selectors;
+    if (i.type === 'rule') {
+      const rule: Rule = i;
+      return rule.selectors;
+    }
   });
   const hoveredSelector = selector
     .split(',')
@@ -31,8 +36,8 @@ function hasAlready(parent, repalcedSelector, selector) {
   });
 }
 
-export default function(actual, _, context) {
-  return (root, result) => {
+export default function(actual: boolean, _, context) {
+  return (root: Root, result: Result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
     if (!validOptions || !actual) {
@@ -40,7 +45,7 @@ export default function(actual, _, context) {
     }
 
     root.walkRules(rule => {
-      let selector = null;
+      let selector: string | null = null;
 
       if (!isStandardSyntaxRule(rule)) {
         return;
