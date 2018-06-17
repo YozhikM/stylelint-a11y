@@ -16,9 +16,26 @@ testRule(rule, {
       code:
         '.bar { animation: none } @media screen and (prefers-reduced-motion) { .bar { animation: none } }',
     },
+    {
+      code:
+        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { animation: none } }',
+    },
   ],
 
   reject: [
+    {
+      code: 'a { animation-name: skew; }',
+      message: messages.expected('a'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code:
+        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { transition: none } }',
+      message: messages.expected('a'),
+      line: 1,
+      column: 4,
+    },
     {
       code: '.foo { transition: none }',
       message: messages.expected('.foo'),

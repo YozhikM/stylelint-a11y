@@ -14,7 +14,7 @@ function check(selector, node) {
   const declarations = node.nodes;
   const params = node.parent.params;
   const parentNodes = node.parent.nodes;
-  const targetProperties = ['transition', 'animation'];
+  const targetProperties = ['transition', 'animation', 'animation-name'];
 
   if (!declarations) return true;
 
@@ -53,7 +53,8 @@ function check(selector, node) {
 
         const matchedChildrenNodes = childrenNodes.some(declaration => {
           const index = targetProperties.indexOf(declaration.prop);
-
+          if (currentSelector === 'animation-name' && targetProperties[index] === 'animation')
+            return true;
           if (currentSelector !== targetProperties[index]) return false;
           if (declaration.value !== 'none') return false;
 
