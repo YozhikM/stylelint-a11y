@@ -1,12 +1,16 @@
-import rule, { messages, ruleName } from '../index';
+import rule, { messages, ruleName } from '../index'; // eslint-disable-line
 
 const globalAny: any = global;
 
 globalAny.testRule(rule, {
   ruleName,
   config: [true],
+  fix: true,
 
   accept: [
+    {
+      code: 'a { }',
+    },
     {
       code: 'a:focus { }',
     },
@@ -16,14 +20,31 @@ globalAny.testRule(rule, {
     {
       code: 'a:hover { } a:focus { }',
     },
+    {
+      code: 'a:focus { outline: thin dotted; } a:active, a:hover { outline: 0; }',
+    },
   ],
 
   reject: [
     {
       code: 'a:hover { }',
+      fixed: 'a:hover, a:focus { }',
       message: messages.expected('a:hover'),
-      line: 1,
-      column: 4,
+    },
+    {
+      code: 'a:hover { } b:hover { }',
+      fixed: 'a:hover, a:focus { } b:hover, b:focus { }',
+      message: messages.expected('a:hover'),
+    },
+    {
+      code: 'a:hover { } a:focus { } b:hover { } b { }',
+      fixed: 'a:hover { } a:focus { } b:hover, b:focus { } b { }',
+      message: messages.expected('b:hover'),
+    },
+    {
+      code: 'a:hover, a:focus { } b:hover { } b { }',
+      fixed: 'a:hover, a:focus { } b:hover, b:focus { } b { }',
+      message: messages.expected('b:hover'),
     },
   ],
 });
