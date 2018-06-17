@@ -1,15 +1,29 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 
+const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
+
 export const ruleName = 'a11y/selector-pseudo-class-focus';
 
 export const messages = utils.ruleMessages(ruleName, {
   expected: value => `Expected that ${value} is used together with :focus pseudo-class`,
 });
 
-function hasAlready(parent, selector) {
+function hasAlready(parent, repalcedSelector, selector) {
+  const nodes = parent.nodes.map(i => {
+    if (i.type === 'rule') return i.selectors;
+  });
+  const hoveredSelector = selector
+    .split(',')
+    .filter(o => o.match(/:hover/gi))
+    .map(o => o.trim());
+  const returned = hoveredSelector.some(o => {
+    return deepFlatten(nodes).indexOf(o.replace(/:hover/gi, ':focus')) >= 0;
+  });
+  if (returned) return true;
+
   return parent.nodes.some(i => {
-    return i.type === 'rule' && i.selectors.indexOf(selector) !== -1;
+    return i.type === 'rule' && i.selectors.indexOf(repalcedSelector) !== -1;
   });
 }
 
@@ -46,7 +60,7 @@ export default function(actual, _, context) {
         return;
       }
 
-      const isAccepted = hasAlready(rule.parent, selector.replace(/:hover/g, ':focus'));
+      const isAccepted = hasAlready(rule.parent, selector.replace(/:hover/g, ':focus'), selector);
 
       if (context.fix && !isAccepted) {
         rule.parent.nodes.forEach(node => {

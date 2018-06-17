@@ -18,6 +18,9 @@ testRule(rule, {
     {
       code: 'a:hover { } a:focus { }',
     },
+    {
+      code: 'a:focus { outline: thin dotted; } a:active, a:hover { outline: 0; }',
+    },
   ],
 
   reject: [
