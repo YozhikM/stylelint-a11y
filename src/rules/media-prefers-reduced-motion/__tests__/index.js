@@ -6,6 +6,9 @@ testRule(rule, {
 
   accept: [
     {
+      code: 'a { }',
+    },
+    {
       code:
         '.foo { transition: none } @media screen and (prefers-reduced-motion: reduce) { .foo { transition: none } }',
     },
@@ -13,9 +16,26 @@ testRule(rule, {
       code:
         '.bar { animation: none } @media screen and (prefers-reduced-motion) { .bar { animation: none } }',
     },
+    {
+      code:
+        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { animation: none } }',
+    },
   ],
 
   reject: [
+    {
+      code: 'a { animation-name: skew; }',
+      message: messages.expected('a'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code:
+        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { transition: none } }',
+      message: messages.expected('a'),
+      line: 1,
+      column: 4,
+    },
     {
       code: '.foo { transition: none }',
       message: messages.expected('.foo'),
@@ -32,6 +52,13 @@ testRule(rule, {
     {
       code:
         '.foo { animation: none } @media screen and (prefers-reduced-motion) { .foo { transition: none } }',
+      message: messages.expected('.foo'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code:
+        '.foo { animation: none } @media screen and (prefers-reduced-motion) { .foo { animation: 1s ease-in } }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,
