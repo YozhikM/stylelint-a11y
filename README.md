@@ -27,6 +27,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 | ⭐️ | [no-outline-none](./src/rules/no-outline-none/README.md) | Disallow outline clearing |
 |  | [no-text-align-justify]('./src/rules/no-text-align-justify/README.md) | Disallow content with `text-align: justify` |
 | ⭐️✒️ | [selector-pseudo-class-focus](./src/rules/selector-pseudo-class-focus/README.md) | Require or disallow a pseudo-element to the selectors with `:hover` |
+|  | [no-obsolete-element](./src/rules/no-obsolete-element/README.md) | Disallow obsolete selectors using |
 
 ## Recommended config
 
@@ -36,12 +37,13 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
   "plugins": ["stylelint-a11y"],
   "rules": {
     "a11y/media-prefers-reduced-motion": true,
+    "a11y/no-obsolete-element": true,
     "a11y/no-outline-none": true,
     "a11y/selector-pseudo-class-focus": true,
-    "a11y/no-text-align-justify": [true, { "severity": "warning" }],
     "a11y/font-size-is-readable": [true, { "severity": "warning" }],
     "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
-    "a11y/no-display-none": [true, { "severity": "warning" }]
+    "a11y/no-display-none": [true, { "severity": "warning" }],
+    "a11y/no-text-align-justify": [true, { "severity": "warning" }],
   }
 }
 ```
