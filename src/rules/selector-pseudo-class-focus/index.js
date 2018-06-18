@@ -1,8 +1,7 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
-import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector';
-import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule';
-import isCustomSelector from 'stylelint/lib/utils/isCustomSelector';
+
+const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
 
 export const ruleName = 'a11y/selector-pseudo-class-focus';
 
@@ -10,29 +9,25 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: value => `Expected that ${value} is used together with :focus pseudo-class`,
 });
 
-function check(selector) {
-  if (!selector) return;
+function hasAlready(parent, repalcedSelector, selector) {
+  const nodes = parent.nodes.map(i => {
+    if (i.type === 'rule') return i.selectors;
+  });
+  const hoveredSelector = selector
+    .split(',')
+    .filter(o => o.match(/:hover/gi))
+    .map(o => o.trim());
+  const returned = hoveredSelector.some(o => {
+    return deepFlatten(nodes).indexOf(o.replace(/:hover/gi, ':focus')) >= 0;
+  });
+  if (returned) return true;
 
-  if (
-    selector.match(/:focus/gi) ||
-    (selector.match(/:hover/gi) && selector.match(/:focus/gi)) ||
-    (!selector.match(/:hover/gi) && !selector.match(/:focus/gi))
-  ) {
-    return true;
-  }
-
-  if (!isStandardSyntaxSelector(selector)) {
-    return true;
-  }
-
-  if (isCustomSelector(selector)) {
-    return true;
-  }
-
-  return false;
+  return parent.nodes.some(i => {
+    return i.type === 'rule' && i.selectors.indexOf(repalcedSelector) !== -1;
+  });
 }
 
-export default function(actual) {
+export default function(actual, _, context) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -40,22 +35,14 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walkRules(rule => {
       let selector = null;
 
-      if (node.type === 'rule') {
-        if (!isStandardSyntaxRule(node)) {
-          return;
-        }
-
-        selector = node.selector;
-      } else if (node.type === 'atrule' && node.name === 'page' && node.params) {
-        if (!isStandardSyntaxAtRule(node)) {
-          return;
-        }
-
-        selector = node.params;
+      if (!isStandardSyntaxRule(rule)) {
+        return;
       }
+
+      selector = rule.selector;
 
       if (!selector) {
         return;
@@ -65,26 +52,29 @@ export default function(actual) {
         return;
       }
 
-      const parentNodes = node.parent.nodes;
-      let isAccepted = null;
+      if (selector.indexOf(':hover') === -1) {
+        return;
+      }
 
-      if (parentNodes.length > 1) {
-        const checkParentNodes = parentNodes
-          .map(parentNode => {
-            return check(parentNode.selector);
-          })
-          .filter(Boolean);
+      if (selector.indexOf(':hover') >= 0 && selector.indexOf(':focus') >= 0) {
+        return;
+      }
 
-        isAccepted = !!checkParentNodes;
-      } else {
-        isAccepted = check(selector);
+      const isAccepted = hasAlready(rule.parent, selector.replace(/:hover/g, ':focus'), selector);
+
+      if (context.fix && !isAccepted) {
+        rule.parent.nodes.forEach(node => {
+          if (node.type === 'rule' && node.selector === selector) {
+            node.selector = `${node.selector}, ${node.selector.replace(/:hover/g, ':focus')}`;
+          }
+        });
       }
 
       if (!isAccepted) {
         utils.report({
-          index: node.lastEach,
+          index: rule.lastEach,
           message: messages.expected(selector),
-          node,
+          node: rule,
           ruleName,
           result,
         });

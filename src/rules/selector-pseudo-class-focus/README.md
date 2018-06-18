@@ -9,6 +9,7 @@ a:focus {
 ```
 
 This rule considers :focus pseudo-class selector defined in the CSS Specifications.
+The `--fix` option on the command line can automatically fix all of the problems reported by this rule.
 
 ## Options
 

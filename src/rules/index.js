@@ -1,4 +1,5 @@
 import fontSizeIsReadable from './font-size-is-readable';
+import lineHeightIsVerticalRhythmed from './line-height-is-vertical-rhythmed';
 import mediaPrefersReducedMotion from './media-prefers-reduced-motion';
 import noDisplayNone from './no-display-none';
 import noOutlineNone from './no-outline-none';
@@ -8,6 +9,7 @@ import noObsoleteElement from './no-obsolete-element';
 
 export default {
   'font-size-is-readable': fontSizeIsReadable,
+  'line-height-is-vertical-rhythmed': lineHeightIsVerticalRhythmed,
   'media-prefers-reduced-motion': mediaPrefersReducedMotion,
   'no-display-none': noDisplayNone,
   'no-obsolete-element': noObsoleteElement,
