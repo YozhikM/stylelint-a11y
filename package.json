@@ -19,7 +19,7 @@
     "prebuild": "rimraf dist",
     "build": "babel src --out-dir dist",
     "lint": "eslint . --ignore-path .gitignore",
-    "prettify": "prettier --write src/**/*",
+    "prettify": "prettier --write src/**/**/**/**",
     "prepublish": "yarn build",
     "pretest": "yarn lint --fix",
     "test": "jest",

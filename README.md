@@ -20,10 +20,11 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 |       | Rule ID                                                                                    | Description                                                             |
 | :---- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-|       | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than 15px                                      |
-|       | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed line-height.                             |
+|       | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than `15px`                                      |
+|       | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed `line-height`                             |
 | ⭐️   | [media-prefers-reduced-motion](./src/rules/media-prefers-reduced-motion/README.md)         | Require certain styles if the animation or transition in media features |
 |       | [no-display-none](./src/rules/no-display-none/README.md)                                   | Disallow content hiding with `display: none` property                   |
+|       | [no-obsolete-attribute](./src/rules/no-obsolete-attribute/README.md)                       | Disallow obsolete attribute using                                        |
 |       | [no-obsolete-element](./src/rules/no-obsolete-element/README.md)                           | Disallow obsolete selectors using                                       |
 | ⭐️   | [no-outline-none](./src/rules/no-outline-none/README.md)                                   | Disallow outline clearing                                               |
 |       | [no-text-align-justify]('./src/rules/no-text-align-justify/README.md)                      | Disallow content with `text-align: justify`                             |
@@ -41,6 +42,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
     "a11y/font-size-is-readable": [true, { "severity": "warning" }],
     "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
     "a11y/no-display-none": [true, { "severity": "warning" }],
+    "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
     "a11y/no-obsolete-element": [true, { "severity": "warning" }],
     "a11y/no-text-align-justify": [true, { "severity": "warning" }]
   }
