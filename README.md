@@ -1,5 +1,6 @@
 # stylelint-a11y
 
+[![NPM version](http://img.shields.io/npm/v/stylelint-a11y.svg)](https://www.npmjs.org/package/stylelint-a11y)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 [![Build Status](https://travis-ci.org/YozhikM/stylelint-a11y.svg?branch=master)](https://travis-ci.org/YozhikM/stylelint-a11y)
 
