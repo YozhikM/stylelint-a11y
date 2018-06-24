@@ -21,7 +21,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 |       | Rule ID                                                                                     | Description                                                             |
 | :---- | :------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------- |
-|       | [content-property-no-static-value]('./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo elements          |
+|       | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo elements          |
 |       | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                        | Disallow font sizes less than `15px`                                    |
 |       | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md)  | Disallow not vertical rhythmed `line-height`                            |
 | ⭐️✒️ | [media-prefers-reduced-motion](./src/rules/media-prefers-reduced-motion/README.md)          | Require certain styles if the animation or transition in media features |
