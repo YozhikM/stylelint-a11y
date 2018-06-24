@@ -1,6 +1,6 @@
-# no-css-generated-content-in-pseudo-elements
+# content-property-no-static-value
 
-Disallow CSS generated content except aria-label attribute content in pseudo-elements.
+Disallow CSS generated content except aria-label attribute content and empty strings.
 
 **Sources:**
 

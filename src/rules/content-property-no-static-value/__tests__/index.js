@@ -9,6 +9,12 @@ testRule(rule, {
       code: ".foo::after { content: ''; }",
     },
     {
+      code: 'a { }',
+    },
+    {
+      code: ".foo:after { content: ''; }",
+    },
+    {
       code: '.foo::after { content: ""; }',
     },
     {
@@ -28,6 +34,9 @@ testRule(rule, {
       message: messages.expected('.bar::before'),
       line: 1,
       column: 4,
+    },
+    {
+      code: ".foo:before, .bar { content: ''; }",
     },
   ],
 });
