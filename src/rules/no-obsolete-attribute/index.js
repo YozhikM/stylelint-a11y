@@ -1,19 +1,20 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
-import { obsoleteElements } from './obsoleteElements';
+import { obsoleteAttributes } from './obsoleteAttributes';
 
-export const ruleName = 'a11y/no-obsolete-element';
+export const ruleName = 'a11y/no-obsolete-attribute';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using obsolete selector "${selector}"`,
+  expected: selector => `Unexpected using obsolete attribute "${selector}"`,
 });
 
 function check(selector, node) {
   if (node.type !== 'rule') {
     return true;
   }
+
   return !node.selectors.some(sel => {
-    return obsoleteElements.has(sel);
+    return obsoleteAttributes.has(sel);
   });
 }
 

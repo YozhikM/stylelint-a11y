@@ -1,4 +1,5 @@
 import { utils } from 'stylelint';
+import { parse } from 'postcss';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector';
 import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule';
@@ -9,12 +10,12 @@ export const ruleName = 'a11y/media-prefers-reduced-motion';
 export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Expected ${selector} is used with @media (prefers-reduced-motion)`,
 });
+const targetProperties = ['transition', 'animation', 'animation-name'];
 
 function check(selector, node) {
   const declarations = node.nodes;
   const params = node.parent.params;
   const parentNodes = node.parent.nodes;
-  const targetProperties = ['transition', 'animation', 'animation-name'];
 
   if (!declarations) return true;
 
@@ -73,7 +74,7 @@ function check(selector, node) {
   return true;
 }
 
-export default function(actual) {
+export default function(actual, _, context) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -103,6 +104,30 @@ export default function(actual) {
       }
 
       const isAccepted = check(selector, node);
+
+      if (context.fix && !isAccepted) {
+        const media = parse('@media screen and (prefers-reduced-motion: reduce) {}');
+        media.nodes.forEach(o => {
+          o.raws.after = '\n';
+        });
+        const cloneRule = node.clone();
+        cloneRule.raws = {
+          ...cloneRule.raws,
+          before: '\n',
+          after: '\n',
+          semicolon: true,
+        };
+        cloneRule.nodes.forEach(o => {
+          if (o.prop === 'animation-name') {
+            o.prop = 'animation';
+          }
+          if (targetProperties.indexOf(o.prop) >= 0) {
+            o.value = 'none';
+          }
+        });
+        media.first.append(cloneRule);
+        node.before(media);
+      }
 
       if (!isAccepted) {
         utils.report({

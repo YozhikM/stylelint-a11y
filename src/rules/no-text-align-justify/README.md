@@ -29,13 +29,13 @@ The following patterns are _not_ considered violations:
 
 ```css
 .foo {
-  text-align:  left;
+  text-align: left;
 }
 ```
 
 ```css
 .foo {
-  text-align:  right;
+  text-align: right;
 }
 ```
 

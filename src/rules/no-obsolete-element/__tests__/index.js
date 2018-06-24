@@ -17,5 +17,17 @@ testRule(rule, {
       line: 1,
       column: 4,
     },
+    {
+      code: 'applet, a { color: pink; }',
+      message: messages.expected('applet, a'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code: 'applet, blink { color: pink; }',
+      message: messages.expected('applet, blink'),
+      line: 1,
+      column: 4,
+    },
   ],
 });

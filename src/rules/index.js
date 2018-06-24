@@ -7,6 +7,7 @@ import noOutlineNone from './no-outline-none';
 import noTextAlignJustify from './no-text-align-justify';
 import selectorPseudoClassFocus from './selector-pseudo-class-focus';
 import noObsoleteElement from './no-obsolete-element';
+import noObsoleteAttribute from './no-obsolete-attribute';
 
 export default {
   'content-property-no-static-value': contentPropertyNoStaticValue,
@@ -14,6 +15,7 @@ export default {
   'line-height-is-vertical-rhythmed': lineHeightIsVerticalRhythmed,
   'media-prefers-reduced-motion': mediaPrefersReducedMotion,
   'no-display-none': noDisplayNone,
+  'no-obsolete-attribute': noObsoleteAttribute,
   'no-obsolete-element': noObsoleteElement,
   'no-outline-none': noOutlineNone,
   'no-text-align-justify': noTextAlignJustify,
