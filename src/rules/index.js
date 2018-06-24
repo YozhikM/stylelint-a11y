@@ -1,3 +1,4 @@
+import contentPropertyNoStaticValue from './content-property-no-static-value';
 import fontSizeIsReadable from './font-size-is-readable';
 import lineHeightIsVerticalRhythmed from './line-height-is-vertical-rhythmed';
 import mediaPrefersReducedMotion from './media-prefers-reduced-motion';
@@ -9,6 +10,7 @@ import noObsoleteElement from './no-obsolete-element';
 import noObsoleteAttribute from './no-obsolete-attribute';
 
 export default {
+  'content-property-no-static-value': contentPropertyNoStaticValue,
   'font-size-is-readable': fontSizeIsReadable,
   'line-height-is-vertical-rhythmed': lineHeightIsVerticalRhythmed,
   'media-prefers-reduced-motion': mediaPrefersReducedMotion,
