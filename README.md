@@ -29,6 +29,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 |       | [no-obsolete-attribute](./src/rules/no-obsolete-attribute/README.md)                        | Disallow obsolete attribute using                                       |
 |       | [no-obsolete-element](./src/rules/no-obsolete-element/README.md)                            | Disallow obsolete selectors using                                       |
 | ⭐️   | [no-outline-none](./src/rules/no-outline-none/README.md)                                    | Disallow outline clearing                                               |
+|       | [no-spread-text]('./src/rules/no-spread-text/README.md)                                     | Require width of text in a comfortable range                            |
 |       | [no-text-align-justify]('./src/rules/no-text-align-justify/README.md)                       | Disallow content with `text-align: justify`                             |
 | ⭐️✒️ | [selector-pseudo-class-focus](./src/rules/selector-pseudo-class-focus/README.md)            | Require or disallow a pseudo-element to the selectors with `:hover`     |
 
@@ -45,6 +46,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
     "a11y/font-size-is-readable": [true, { "severity": "warning" }],
     "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
     "a11y/no-display-none": [true, { "severity": "warning" }],
+    "a11y/no-spread-text": [true, { "severity": "warning" }],
     "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
     "a11y/no-obsolete-element": [true, { "severity": "warning" }],
     "a11y/no-text-align-justify": [true, { "severity": "warning" }]
