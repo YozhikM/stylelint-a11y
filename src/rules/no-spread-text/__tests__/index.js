@@ -9,10 +9,16 @@ testRule(rule, {
       code: '.foo { }',
     },
     {
-      code: '.foo { max-width: 65ch; }',
+      code: '.foo { display: flex; max-width: 82ch; }',
     },
     {
-      code: '.bar { max-width: 100px; }',
+      code: '.foo { height: 100%; max-width: 82ch; }',
+    },
+    {
+      code: '.foo { text-transform: lowercase; max-width: 65ch; }',
+    },
+    {
+      code: '.bar { word-spacing: -5px; max-width: 100px; }',
     },
     {
       code: '.baz { MAX-WIDTH: 63CH; }',
@@ -21,13 +27,13 @@ testRule(rule, {
 
   reject: [
     {
-      code: '.foo { max-width: 40ch; }',
+      code: '.foo { text-transform: lowercase; max-width: 40ch; }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,
     },
     {
-      code: '.bar { MAX-WIDTH: 81CH; }',
+      code: '.bar { LINE-HEIGHT: 1.8; MAX-WIDTH: 81CH; }',
       message: messages.expected('.bar'),
       line: 1,
       column: 4,

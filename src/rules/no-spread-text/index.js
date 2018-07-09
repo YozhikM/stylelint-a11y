@@ -7,6 +7,26 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Unexpected max-width in ${selector}`,
 });
 
+const textStyles = [
+  'text-decoration',
+  'text-align',
+  'text-transform',
+  'text-indent',
+  'letter-spacing',
+  'line-height',
+  'direction',
+  'word-spacing',
+  'text-shadow',
+  'text-overflow',
+  'color',
+];
+
+const nodesProbablyForText = nodes =>
+  nodes
+    .map(node => node.prop)
+    .map(prop => prop.toLowerCase())
+    .some(prop => textStyles.includes(prop));
+
 export default function(actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
@@ -26,14 +46,16 @@ export default function(actual) {
         return;
       }
 
-      const isRejected = rule.nodes.some(o => {
-        return (
-          o.type === 'decl' &&
-          o.prop.toLowerCase() === 'max-width' &&
-          o.value.toLowerCase().endsWith('ch') &&
-          (parseFloat(o.value) < 45 || parseFloat(o.value) > 80)
-        );
-      });
+      const isRejected =
+        nodesProbablyForText(rule.nodes) &&
+        rule.nodes.some(o => {
+          return (
+            o.type === 'decl' &&
+            o.prop.toLowerCase() === 'max-width' &&
+            o.value.toLowerCase().endsWith('ch') &&
+            (parseFloat(o.value) < 45 || parseFloat(o.value) > 80)
+          );
+        });
 
       if (isRejected) {
         utils.report({
