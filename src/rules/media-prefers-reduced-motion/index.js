@@ -127,6 +127,7 @@ export default function(actual, _, context) {
         });
         media.first.append(cloneRule);
         node.before(media);
+        return;
       }
 
       if (!isAccepted) {
