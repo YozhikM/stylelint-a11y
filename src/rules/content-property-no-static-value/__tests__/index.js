@@ -38,5 +38,8 @@ testRule(rule, {
     {
       code: ".foo:before, .bar { content: ''; }",
     },
+    {
+      code: ".foo { font-size: '12px'; width: '200px'; }",
+    },
   ],
 });
