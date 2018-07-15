@@ -20,6 +20,9 @@ testRule(rule, {
     {
       code: '.bar::before { content: attr(aria-label); }',
     },
+    {
+      code: ".foo { font-size: '12px'; width: '200px'; }",
+    },
   ],
 
   reject: [
