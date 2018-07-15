@@ -24,6 +24,7 @@ const textStyles = [
 const nodesProbablyForText = nodes =>
   nodes
     .map(node => node.prop)
+    .filter(Boolean)
     .map(prop => prop.toLowerCase())
     .some(prop => textStyles.includes(prop));
 
