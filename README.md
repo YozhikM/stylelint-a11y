@@ -22,6 +22,7 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 |      | Rule ID                                                                                    | Description                                                             |
 | :--- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+|      | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo-elements          |
 |      | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than `15px`                                    |
 |      | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed `line-height`                            |
 | ⭐️✒️ | [media-prefers-reduced-motion](./src/rules/media-prefers-reduced-motion/README.md)         | Require certain styles if the animation or transition in media features |
@@ -32,7 +33,6 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 | ⭐️   | [no-outline-none](./src/rules/no-outline-none/README.md)                                   | Disallow outline clearing                                               |
 |      | [no-text-align-justify](./src/rules/no-text-align-justify/README.md)                       | Disallow content with `text-align: justify`                             |
 | ⭐️✒️ | [selector-pseudo-class-focus](./src/rules/selector-pseudo-class-focus/README.md)           | Require or disallow a pseudo-element to the selectors with `:hover`     |
-|      | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo elements          |
 
 
 ## Recommended config
@@ -44,14 +44,14 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
     "a11y/media-prefers-reduced-motion": true,
     "a11y/no-outline-none": true,
     "a11y/selector-pseudo-class-focus": true,
+    "a11y/content-property-no-static-value": [true, { "severity": "warning" }],
     "a11y/font-size-is-readable": [true, { "severity": "warning" }],
     "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
     "a11y/no-display-none": [true, { "severity": "warning" }],
     "a11y/no-spread-text": [true, { "severity": "warning" }],
     "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
     "a11y/no-obsolete-element": [true, { "severity": "warning" }],
-    "a11y/no-text-align-justify": [true, { "severity": "warning" }],
-    "a11y/content-property-no-static-value": [true, { "severity": "warning" }]
+    "a11y/no-text-align-justify": [true, { "severity": "warning" }]
   }
 }
 ```
