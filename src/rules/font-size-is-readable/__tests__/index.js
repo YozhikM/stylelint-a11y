@@ -12,6 +12,9 @@ testRule(rule, {
       code: '.foo { font-size: 15px; }',
     },
     {
+      code: '.foo { font-size: 12pt; }',
+    },
+    {
       code: '.bar { FONT-SIZE: 15PX; }',
     },
     {
@@ -22,6 +25,12 @@ testRule(rule, {
   reject: [
     {
       code: '.foo { font-size: 10px; }',
+      message: messages.expected('.foo'),
+      line: 1,
+      column: 4,
+    },
+    {
+      code: '.foo { font-size: 3pt; }',
       message: messages.expected('.foo'),
       line: 1,
       column: 4,

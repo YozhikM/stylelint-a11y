@@ -7,6 +7,15 @@ export const messages = utils.ruleMessages(ruleName, {
   expected: selector => `Expected a larger font-size in ${selector}`,
 });
 
+const THRESHOLD_IN_PX = 15;
+
+const pxToPt = v => 0.75 * v;
+
+const checkInPx = value =>
+  value.toLowerCase().endsWith('px') && parseFloat(value) < THRESHOLD_IN_PX;
+const checkInPt = value =>
+  value.toLowerCase().endsWith('pt') && parseFloat(value) < pxToPt(THRESHOLD_IN_PX);
+
 export default function(actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
@@ -30,8 +39,7 @@ export default function(actual) {
         return (
           o.type === 'decl' &&
           o.prop.toLowerCase() === 'font-size' &&
-          o.value.toLowerCase().endsWith('px') &&
-          parseFloat(o.value) < 15
+          (checkInPx(o.value) || checkInPt(o.value))
         );
       });
 
