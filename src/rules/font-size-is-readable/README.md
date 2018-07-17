@@ -1,6 +1,6 @@
 # font-size-large-enough
 
-Disallow font sizes less than 15px.
+Disallow font sizes less than 15px (or 11.25pt).
 
 **Sources:**
 
