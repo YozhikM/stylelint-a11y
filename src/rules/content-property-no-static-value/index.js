@@ -13,7 +13,7 @@ const isContentPropertyUsedCorrectly = selectors =>
   });
 
 const checkNodesForContentProperty = node =>
-  node.nodes.filter(Boolean).some(node => node.prop.toLowerCase() === 'content');
+  node.nodes.filter(node => node.prop).some(node => node.prop.toLowerCase() === 'content');
 
 function check(node) {
   if (node.type !== 'rule' || !checkNodesForContentProperty(node) || !node.first) {
