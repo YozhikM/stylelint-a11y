@@ -20,21 +20,20 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 - ⭐️ - the mark of recommended rules.
 - ✒️ - the mark of fixable rules.
 
-
-|      | Rule ID                                                                                    | Description                                                             |
-| :--- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-|      | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo-elements          |
-|      | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than `15px`                                    |
-|      | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed `line-height`                            |
+|       | Rule ID                                                                                    | Description                                                             |
+| :---- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+|       | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo-elements          |
+|       | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than `15px`                                    |
+|       | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed `line-height`                            |
 | ⭐️✒️ | [media-prefers-reduced-motion](./src/rules/media-prefers-reduced-motion/README.md)         | Require certain styles if the animation or transition in media features |
-|      | [no-display-none](./src/rules/no-display-none/README.md)                                   | Disallow content hiding with `display: none` property                   |
-|      | [no-obsolete-attribute](./src/rules/no-obsolete-attribute/README.md)                       | Disallow obsolete attribute using                                       |
-|      | [no-obsolete-element](./src/rules/no-obsolete-element/README.md)                           | Disallow obsolete selectors using                                       |
-|      | [no-spread-text](./src/rules/no-spread-text/README.md)                                     | Require width of text in a comfortable range                            |
+|       | [media-prefers-color-scheme](./src/rules/media-prefers-color-scheme/README.md)             | Require implementation of certain styles for selectors with colors.     |
+|       | [no-display-none](./src/rules/no-display-none/README.md)                                   | Disallow content hiding with `display: none` property                   |
+|       | [no-obsolete-attribute](./src/rules/no-obsolete-attribute/README.md)                       | Disallow obsolete attribute using                                       |
+|       | [no-obsolete-element](./src/rules/no-obsolete-element/README.md)                           | Disallow obsolete selectors using                                       |
+|       | [no-spread-text](./src/rules/no-spread-text/README.md)                                     | Require width of text in a comfortable range                            |
 | ⭐️   | [no-outline-none](./src/rules/no-outline-none/README.md)                                   | Disallow outline clearing                                               |
-|      | [no-text-align-justify](./src/rules/no-text-align-justify/README.md)                       | Disallow content with `text-align: justify`                             |
+|       | [no-text-align-justify](./src/rules/no-text-align-justify/README.md)                       | Disallow content with `text-align: justify`                             |
 | ⭐️✒️ | [selector-pseudo-class-focus](./src/rules/selector-pseudo-class-focus/README.md)           | Require or disallow a pseudo-element to the selectors with `:hover`     |
-
 
 ## Recommended config
 
@@ -52,7 +51,8 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
     "a11y/no-spread-text": [true, { "severity": "warning" }],
     "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
     "a11y/no-obsolete-element": [true, { "severity": "warning" }],
-    "a11y/no-text-align-justify": [true, { "severity": "warning" }]
+    "a11y/no-text-align-justify": [true, { "severity": "warning" }],
+    "a11y/media-prefers-color-scheme": [true, { "severity": "warning" }]
   }
 }
 ```
