@@ -14,36 +14,28 @@ The following pattern are considered violations:
 
 ```css
 .foo {
-  transition: none;
+  animation: 1s ease-in;
 }
 ```
 
 ```css
 .bar {
-  animation: none;
-}
-.baz {
-  transition: none;
+  animation-name: skew;
 }
 @media screen and (prefers-reduced-motion) {
-  .baz {
-    transition: none;
-  }
-}
-```
-
-```css
-.foo {
-  animation: none;
-}
-@media screen and (prefers-reduced-motion) {
-  .foo {
+  .bar {
     transition: none;
   }
 }
 ```
 
 The following patterns are _not_ considered violations:
+
+```css
+div {
+  transition: none;
+}
+```
 
 ```css
 .foo {

@@ -33,6 +33,9 @@ function check(selector, node) {
     const noMatchedParams = !params || params.indexOf('prefers-reduced-motion') === -1;
     const index = targetProperties.indexOf(declaration.prop);
     currentSelector = targetProperties[index];
+    if (targetProperties.indexOf(declaration.prop) >= 0 && declaration.value === 'none') {
+      return false;
+    }
 
     return index >= 0 && noMatchedParams;
   });
