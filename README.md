@@ -37,25 +37,26 @@ Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detail
 
 ## Recommended config
 
+Add recommended configuration by simply adding the following to `extends` in your stylelint configuration:
+
+```
+stylelint-a11y/recommended
+```
+
+This shareable config contains the following:
+
 ```json
 {
   "plugins": ["stylelint-a11y"],
   "rules": {
     "a11y/media-prefers-reduced-motion": true,
     "a11y/no-outline-none": true,
-    "a11y/selector-pseudo-class-focus": true,
-    "a11y/content-property-no-static-value": [true, { "severity": "warning" }],
-    "a11y/font-size-is-readable": [true, { "severity": "warning" }],
-    "a11y/line-height-is-vertical-rhythmed": [true, { "severity": "warning" }],
-    "a11y/no-display-none": [true, { "severity": "warning" }],
-    "a11y/no-spread-text": [true, { "severity": "warning" }],
-    "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
-    "a11y/no-obsolete-element": [true, { "severity": "warning" }],
-    "a11y/no-text-align-justify": [true, { "severity": "warning" }],
-    "a11y/media-prefers-color-scheme": [true, { "severity": "warning" }]
+    "a11y/selector-pseudo-class-focus": true
   }
 }
 ```
+
+Since it adds stylelint-a11y to `plugins`, you don't have to do this yourself when extending this config.
 
 ## Help out
 
