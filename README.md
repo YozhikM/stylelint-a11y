@@ -13,7 +13,7 @@ yarn add --dev stylelint stylelint-a11y
 
 Create the `.stylelintrc.json` config file (or open the existing one), add `stylelint-a11y` to the plugins array and the rules you need to the rules list. All rules from stylelint-a11y need to be namespaced with `a11y`.
 
-Please refer to [stylelint docs](http://stylelint.io/user-guide/) for the detailed info on using this linter.
+Please refer to [stylelint docs](https://stylelint.io/user-guide/) for the detailed info on using this linter.
 
 ## Rules
 
@@ -73,4 +73,4 @@ There work on the plugin's rules is still in progress, so if you feel like it, y
 
 We communicate via [issues](https://github.com/YozhikM/stylelint-a11y/issues) and [pull requests](https://github.com/YozhikM/stylelint-a11y/pulls).
 
-There is also [stackoverflow](http://stackoverflow.com/questions/tagged/stylelint), which would be the preferred QA forum.
+There is also [stackoverflow](https://stackoverflow.com/questions/tagged/stylelint), which would be the preferred QA forum.
