@@ -1,4 +1,4 @@
-# font-size-large-enough
+# font-size-is-readable
 
 Disallow font sizes less than 15px (or 11.25pt).
 
