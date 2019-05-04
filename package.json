@@ -52,6 +52,7 @@
     "eslint-config-stylelint": "^9.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "extend": ">=3.0.2",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
     "lodash": "^4.17.11",
