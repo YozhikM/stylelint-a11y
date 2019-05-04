@@ -27,19 +27,19 @@ testRule(rule, {
       code: '.foo { font-size: 10px; }',
       message: messages.expected('.foo'),
       line: 1,
-      column: 4,
+      column: 3,
     },
     {
       code: '.foo { font-size: 3pt; }',
       message: messages.expected('.foo'),
       line: 1,
-      column: 4,
+      column: 3,
     },
     {
       code: '.bar { FONT-SIZE: 8PX; }',
       message: messages.expected('.bar'),
       line: 1,
-      column: 4,
+      column: 3,
     },
   ],
 });

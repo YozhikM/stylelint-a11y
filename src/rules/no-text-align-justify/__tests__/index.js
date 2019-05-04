@@ -30,13 +30,13 @@ testRule(rule, {
       code: '.foo { text-align: justify; }',
       message: messages.expected('.foo'),
       line: 1,
-      column: 4,
+      column: 3,
     },
     {
       code: '.foo { TEXT-ALIGN: JUSTIFY; }',
       message: messages.expected('.foo'),
       line: 1,
-      column: 4,
+      column: 3,
     },
   ],
 });
