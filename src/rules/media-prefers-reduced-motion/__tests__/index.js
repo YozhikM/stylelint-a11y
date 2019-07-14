@@ -24,6 +24,10 @@ testRule(rule, {
       code:
         'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { animation: none } }',
     },
+    {
+      code:
+        '.foo { transition: all; @media (prefers-reduced-motion: reduce) { transition: none; } }',
+    },
   ],
 
   reject: [

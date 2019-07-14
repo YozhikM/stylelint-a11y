@@ -12,6 +12,18 @@ export const messages = utils.ruleMessages(ruleName, {
 });
 const targetProperties = ['transition', 'animation', 'animation-name'];
 
+function checkChildrenNodes(childrenNodes, currentSelector, parentNode) {
+  return childrenNodes.some(declaration => {
+    const index = targetProperties.indexOf(declaration.prop);
+    if (currentSelector === 'animation-name' && targetProperties[index] === 'animation')
+      return true;
+    if (currentSelector !== targetProperties[index]) return false;
+    if (declaration.value !== 'none') return false;
+
+    return index >= 0 && parentNode.params.indexOf('prefers-reduced-motion') >= 0;
+  });
+}
+
 function check(selector, node) {
   const declarations = node.nodes;
   const params = node.parent.params;
@@ -49,23 +61,28 @@ function check(selector, node) {
         const childrenNodes = childrenNode.nodes;
 
         if (
+          childrenNode.type === 'atrule' &&
+          childrenNode.params.indexOf('prefers-reduced-motion') >= 0
+        ) {
+          return childrenNodes.some(declaration => {
+            const index = targetProperties.indexOf(declaration.prop);
+            if (currentSelector === 'animation-name' && targetProperties[index] === 'animation')
+              return true;
+            if (currentSelector !== targetProperties[index]) return false;
+            if (declaration.value !== 'none') return false;
+
+            return index >= 0;
+          });
+        }
+
+        if (
           !parentNode.params ||
           !Array.isArray(childrenNodes) ||
           selector !== childrenNode.selector
         )
           return false;
 
-        const matchedChildrenNodes = childrenNodes.some(declaration => {
-          const index = targetProperties.indexOf(declaration.prop);
-          if (currentSelector === 'animation-name' && targetProperties[index] === 'animation')
-            return true;
-          if (currentSelector !== targetProperties[index]) return false;
-          if (declaration.value !== 'none') return false;
-
-          return index >= 0 && parentNode.params.indexOf('prefers-reduced-motion') >= 0;
-        });
-
-        return matchedChildrenNodes;
+        return checkChildrenNodes(childrenNodes, currentSelector, parentNode);
       });
     });
 
