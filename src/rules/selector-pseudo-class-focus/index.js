@@ -68,6 +68,7 @@ export default function(actual, _, context) {
             node.selector = `${node.selector}, ${node.selector.replace(/:hover/g, ':focus')}`;
           }
         });
+        return;
       }
 
       if (!isAccepted) {

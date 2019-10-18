@@ -103,6 +103,7 @@ global.testRule = (rule, schema) => {
                 const fixedCode = getOutputCss(output2);
 
                 expect(fixedCode).toBe(testCase.fixed);
+                expect(output2.results[0].warnings.length).toBe(0); // Ensure errors are not reported on fixed code
               });
             });
           });
