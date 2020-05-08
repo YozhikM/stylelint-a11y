@@ -1,6 +1,6 @@
-import rule, { ruleName, messages } from '../index';
+import { ruleName, messages } from '../index';
 
-testRule(rule, {
+testRule({
   ruleName,
   config: [true],
 
