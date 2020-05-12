@@ -1,6 +1,6 @@
-import rule, { messages, ruleName } from '../index'; // eslint-disable-line
+import { messages, ruleName } from '../index'; // eslint-disable-line
 
-testRule(rule, {
+testRule({
   ruleName,
   config: [true],
   fix: true,
@@ -32,7 +32,10 @@ testRule(rule, {
     {
       code: 'a:hover { } b:hover { }',
       fixed: 'a:hover, a:focus { } b:hover, b:focus { }',
-      message: messages.expected('a:hover'),
+      warnings: [
+        { message: messages.expected('a:hover'), column: 3, line: 1 },
+        { message: messages.expected('b:hover'), column: 15, line: 1 },
+      ],
     },
     {
       code: 'a:hover { } a:focus { } b:hover { } b { }',

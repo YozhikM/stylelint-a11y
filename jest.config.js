@@ -1,4 +1,5 @@
 module.exports = {
+  preset: 'jest-preset-stylelint',
   clearMocks: true,
   collectCoverage: false,
   collectCoverageFrom: ['src/**/*.js'],

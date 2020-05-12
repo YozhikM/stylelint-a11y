@@ -1,6 +1,6 @@
-import rule, { messages, ruleName } from '../index';
+import { messages, ruleName } from '../index';
 
-testRule(rule, {
+testRule({
   ruleName,
   config: [true],
 
@@ -40,6 +40,9 @@ testRule(rule, {
     },
     {
       code: ".foo:before, .bar { content: ''; }",
+      message: messages.expected('.foo:before, .bar'),
+      line: 1,
+      column: 3,
     },
   ],
 });

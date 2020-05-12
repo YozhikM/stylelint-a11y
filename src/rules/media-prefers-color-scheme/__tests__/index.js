@@ -1,6 +1,6 @@
-import rule, { messages, ruleName } from '../index';
+import { messages, ruleName } from '../index';
 
-testRule(rule, {
+testRule({
   ruleName,
   config: [true],
 
@@ -41,9 +41,18 @@ testRule(rule, {
     {
       code:
         '.bar { color: red; } .baz { background-color: red; } @media screen and (prefers-color-scheme: dark) { .baz { color: blue; } }',
-      message: messages.expected('.bar'),
-      line: 1,
-      column: 3,
+      warnings: [
+        {
+          message: messages.expected('.bar'),
+          line: 1,
+          column: 3,
+        },
+        {
+          message: messages.expected('.baz'),
+          line: 1,
+          column: 24,
+        },
+      ],
     },
     {
       code:
