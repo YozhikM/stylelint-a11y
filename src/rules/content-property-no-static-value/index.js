@@ -21,13 +21,12 @@ function check(node) {
   }
 
   return node.nodes.some(o => {
+    const allowedValues = ['\'\'', '""', 'attr(aria-label)', 'none', 'initial'];
     return (
       o.type === 'decl' &&
       o.prop.toLowerCase() === 'content' &&
       isContentPropertyUsedCorrectly(o.parent.selectors) &&
-      (o.value.toLowerCase() === "''" ||
-        o.value.toLowerCase() === '""' ||
-        o.value.toLowerCase() === 'attr(aria-label)')
+      allowedValues.indexOf(o.value.toLowerCase()) > -1
     );
   });
 }
