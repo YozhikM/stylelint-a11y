@@ -23,6 +23,12 @@ testRule({
     {
       code: ".foo { font-size: '12px'; width: '200px'; }",
     },
+    {
+      code: '.foo::after { content: none; }',
+    },
+    {
+      code: '.foo::after { content: initial; }',
+    },
   ],
 
   reject: [
