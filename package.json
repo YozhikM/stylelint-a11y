@@ -1,6 +1,6 @@
 {
   "name": "stylelint-a11y",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Plugin for stylelint with a11y rules",
   "main": "dist/index.js",
   "repository": "https://github.com/YozhikM/stylelint-a11y.git",
