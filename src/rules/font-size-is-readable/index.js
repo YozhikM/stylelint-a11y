@@ -4,19 +4,19 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/font-size-is-readable';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Expected a larger font-size in ${selector}`,
+  expected: (selector) => `Expected a larger font-size in ${selector}`,
 });
 
 const THRESHOLD_IN_PX = 15;
 
-const pxToPt = v => 0.75 * v;
+const pxToPt = (v) => 0.75 * v;
 
-const checkInPx = value =>
+const checkInPx = (value) =>
   value.toLowerCase().endsWith('px') && parseFloat(value) < THRESHOLD_IN_PX;
-const checkInPt = value =>
+const checkInPt = (value) =>
   value.toLowerCase().endsWith('pt') && parseFloat(value) < pxToPt(THRESHOLD_IN_PX);
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -24,7 +24,7 @@ export default function(actual) {
       return;
     }
 
-    root.walkRules(rule => {
+    root.walkRules((rule) => {
       let selector = null;
       if (!isStandardSyntaxRule(rule)) {
         return;
@@ -35,7 +35,7 @@ export default function(actual) {
         return;
       }
 
-      const isRejected = rule.nodes.some(o => {
+      const isRejected = rule.nodes.some((o) => {
         return (
           o.type === 'decl' &&
           o.prop.toLowerCase() === 'font-size' &&

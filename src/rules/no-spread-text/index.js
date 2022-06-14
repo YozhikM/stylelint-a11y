@@ -4,7 +4,7 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/no-spread-text';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected max-width in ${selector}`,
+  expected: (selector) => `Unexpected max-width in ${selector}`,
 });
 
 const textStyles = [
@@ -21,14 +21,14 @@ const textStyles = [
   'color',
 ];
 
-const nodesProbablyForText = nodes =>
+const nodesProbablyForText = (nodes) =>
   nodes
-    .map(node => node.prop)
+    .map((node) => node.prop)
     .filter(Boolean)
-    .map(prop => prop.toLowerCase())
-    .some(prop => textStyles.includes(prop));
+    .map((prop) => prop.toLowerCase())
+    .some((prop) => textStyles.includes(prop));
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -36,7 +36,7 @@ export default function(actual) {
       return;
     }
 
-    root.walkRules(rule => {
+    root.walkRules((rule) => {
       let selector = null;
       if (!isStandardSyntaxRule(rule)) {
         return;
@@ -49,7 +49,7 @@ export default function(actual) {
 
       const isRejected =
         nodesProbablyForText(rule.nodes) &&
-        rule.nodes.some(o => {
+        rule.nodes.some((o) => {
           return (
             o.type === 'decl' &&
             o.prop.toLowerCase() === 'max-width' &&

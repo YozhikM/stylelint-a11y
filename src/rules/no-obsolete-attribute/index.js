@@ -5,7 +5,7 @@ import { obsoleteAttributes } from './obsoleteAttributes';
 export const ruleName = 'a11y/no-obsolete-attribute';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using obsolete attribute "${selector}"`,
+  expected: (selector) => `Unexpected using obsolete attribute "${selector}"`,
 });
 
 function check(selector, node) {
@@ -13,12 +13,12 @@ function check(selector, node) {
     return true;
   }
 
-  return !node.selectors.some(sel => {
+  return !node.selectors.some((sel) => {
     return obsoleteAttributes.has(sel);
   });
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -26,7 +26,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

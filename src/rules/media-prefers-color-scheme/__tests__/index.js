@@ -9,12 +9,10 @@ testRule({
       code: 'a { }',
     },
     {
-      code:
-        '.foo { color: red } @media screen and (prefers-color-scheme: dark) { .foo { color: blue } }',
+      code: '.foo { color: red } @media screen and (prefers-color-scheme: dark) { .foo { color: blue } }',
     },
     {
-      code:
-        '.bar { background-color: red } @media screen and (prefers-color-scheme: dark) { .bar { background-color: blue } }',
+      code: '.bar { background-color: red } @media screen and (prefers-color-scheme: dark) { .bar { background-color: blue } }',
     },
   ],
 
@@ -26,8 +24,7 @@ testRule({
       column: 3,
     },
     {
-      code:
-        'a { color: red; } @media screen and (prefers-color-scheme: dark) { a { background-color: red; } }',
+      code: 'a { color: red; } @media screen and (prefers-color-scheme: dark) { a { background-color: red; } }',
       message: messages.expected('a'),
       line: 1,
       column: 3,
@@ -39,8 +36,7 @@ testRule({
       column: 3,
     },
     {
-      code:
-        '.bar { color: red; } .baz { background-color: red; } @media screen and (prefers-color-scheme: dark) { .baz { color: blue; } }',
+      code: '.bar { color: red; } .baz { background-color: red; } @media screen and (prefers-color-scheme: dark) { .baz { color: blue; } }',
       warnings: [
         {
           message: messages.expected('.bar'),
@@ -55,8 +51,7 @@ testRule({
       ],
     },
     {
-      code:
-        '.foo { background-color: red; } @media screen and (prefers-color-scheme) { .foo { color: red; } }',
+      code: '.foo { background-color: red; } @media screen and (prefers-color-scheme) { .foo { color: red; } }',
       message: messages.expected('.foo'),
       line: 1,
       column: 3,

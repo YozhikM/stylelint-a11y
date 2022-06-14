@@ -4,7 +4,7 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/no-outline-none';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using "outline" property in ${selector}`,
+  expected: (selector) => `Unexpected using "outline" property in ${selector}`,
 });
 
 function check(selector, node) {
@@ -17,7 +17,7 @@ function check(selector, node) {
   }
 
   const hasEmptyOutline = node.nodes.some(
-    o =>
+    (o) =>
       o.type === 'decl' &&
       o.prop.toLowerCase() === 'outline' &&
       ['0', 'none'].indexOf(o.value.toLowerCase()) >= 0
@@ -25,7 +25,7 @@ function check(selector, node) {
 
   if (hasEmptyOutline) {
     return node.nodes.some(
-      o =>
+      (o) =>
         o.type === 'decl' &&
         ['border', 'border-color', 'box-shadow'].indexOf(o.prop.toLowerCase()) >= 0 &&
         !o.value.toLowerCase().match(/transparent/gi)
@@ -35,7 +35,7 @@ function check(selector, node) {
   return true;
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -43,7 +43,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

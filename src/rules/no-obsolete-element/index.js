@@ -5,19 +5,19 @@ import { obsoleteElements } from './obsoleteElements';
 export const ruleName = 'a11y/no-obsolete-element';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using obsolete selector "${selector}"`,
+  expected: (selector) => `Unexpected using obsolete selector "${selector}"`,
 });
 
 function check(selector, node) {
   if (node.type !== 'rule') {
     return true;
   }
-  return !node.selectors.some(sel => {
+  return !node.selectors.some((sel) => {
     return obsoleteElements.has(sel);
   });
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -25,7 +25,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

@@ -7,7 +7,7 @@ import isCustomSelector from 'stylelint/lib/utils/isCustomSelector';
 export const ruleName = 'a11y/media-prefers-color-scheme';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Expected ${selector} is used with @media (prefers-color-scheme)`,
+  expected: (selector) => `Expected ${selector} is used with @media (prefers-color-scheme)`,
 });
 const targetProperties = ['background-color', 'color'];
 
@@ -28,7 +28,7 @@ function check(selector, node) {
 
   let currentSelector = null;
 
-  const declarationsIsMatched = declarations.some(declaration => {
+  const declarationsIsMatched = declarations.some((declaration) => {
     const noMatchedParams = !params || params.indexOf('prefers-color-scheme') === -1;
     const index = targetProperties.indexOf(declaration.prop);
     currentSelector = targetProperties[index];
@@ -39,9 +39,9 @@ function check(selector, node) {
   if (!declarationsIsMatched) return true;
 
   if (declarationsIsMatched) {
-    const parentMatchedNode = parentNodes.some(parentNode => {
+    const parentMatchedNode = parentNodes.some((parentNode) => {
       if (!parentNode || !parentNode.nodes) return;
-      return parentNode.nodes.some(childrenNode => {
+      return parentNode.nodes.some((childrenNode) => {
         const childrenNodes = childrenNode.nodes;
 
         if (
@@ -51,7 +51,7 @@ function check(selector, node) {
         )
           return false;
 
-        const matchedChildrenNodes = childrenNodes.some(declaration => {
+        const matchedChildrenNodes = childrenNodes.some((declaration) => {
           const index = targetProperties.indexOf(declaration.prop);
           if (currentSelector !== targetProperties[index]) return false;
 
@@ -70,7 +70,7 @@ function check(selector, node) {
   return true;
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -78,7 +78,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

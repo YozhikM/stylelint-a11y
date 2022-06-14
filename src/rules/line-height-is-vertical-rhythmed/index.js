@@ -4,7 +4,7 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/line-height-is-vertical-rhythmed';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Expected a vertical rhythmed line-height in ${selector}`,
+  expected: (selector) => `Expected a vertical rhythmed line-height in ${selector}`,
 });
 
 function check(node) {
@@ -12,16 +12,16 @@ function check(node) {
     return true;
   }
 
-  const checkInPx = o => o.value.toLowerCase().endsWith('px') && parseInt(o.value) % 24 !== 0;
-  const checkInRel = o => !isNaN(o.value) && parseFloat(o.value) < 1.5;
+  const checkInPx = (o) => o.value.toLowerCase().endsWith('px') && parseInt(o.value) % 24 !== 0;
+  const checkInRel = (o) => !isNaN(o.value) && parseFloat(o.value) < 1.5;
 
   return !node.nodes.some(
-    o =>
+    (o) =>
       o.type === 'decl' && o.prop.toLowerCase() === 'line-height' && (checkInPx(o) || checkInRel(o))
   );
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -29,7 +29,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

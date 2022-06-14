@@ -4,7 +4,7 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 export const ruleName = 'a11y/no-display-none';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Unexpected using "{ display: none; }" in ${selector}`,
+  expected: (selector) => `Unexpected using "{ display: none; }" in ${selector}`,
 });
 
 function check(selector, node) {
@@ -13,11 +13,12 @@ function check(selector, node) {
   }
 
   return !node.nodes.some(
-    o => o.type === 'decl' && o.prop.toLowerCase() === 'display' && o.value.toLowerCase() === 'none'
+    (o) =>
+      o.type === 'decl' && o.prop.toLowerCase() === 'display' && o.value.toLowerCase() === 'none'
   );
 }
 
-export default function(actual) {
+export default function (actual) {
   return (root, result) => {
     const validOptions = utils.validateOptions(result, ruleName, { actual });
 
@@ -25,7 +26,7 @@ export default function(actual) {
       return;
     }
 
-    root.walk(node => {
+    root.walk((node) => {
       let selector = null;
 
       if (node.type === 'rule') {

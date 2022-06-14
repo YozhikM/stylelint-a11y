@@ -13,20 +13,16 @@ testRule({
       code: 'div { transition: none; }',
     },
     {
-      code:
-        '.foo { transition: none } @media screen and (prefers-reduced-motion: reduce) { .foo { transition: none } }',
+      code: '.foo { transition: none } @media screen and (prefers-reduced-motion: reduce) { .foo { transition: none } }',
     },
     {
-      code:
-        '.bar { animation: none } @media screen and (prefers-reduced-motion) { .bar { animation: none } }',
+      code: '.bar { animation: none } @media screen and (prefers-reduced-motion) { .bar { animation: none } }',
     },
     {
-      code:
-        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { animation: none } }',
+      code: 'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { animation: none } }',
     },
     {
-      code:
-        '.foo { transition: all; @media (prefers-reduced-motion: reduce) { transition: none; } }',
+      code: '.foo { transition: all; @media (prefers-reduced-motion: reduce) { transition: none; } }',
     },
   ],
 
@@ -40,8 +36,7 @@ testRule({
       column: 3,
     },
     {
-      code:
-        'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { transition: none; } }',
+      code: 'a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { transition: none; } }',
       fixed:
         '@media screen and (prefers-reduced-motion: reduce) {\na { animation: none;\n}\n} a { animation-name: skew; } @media screen and (prefers-reduced-motion) { a { transition: none; } }',
       message: messages.expected('a'),
@@ -49,8 +44,7 @@ testRule({
       column: 3,
     },
     {
-      code:
-        '.foo { animation: 1s ease-in; } @media screen and (prefers-reduced-motion) { .foo { animation: 1s ease-in; } }',
+      code: '.foo { animation: 1s ease-in; } @media screen and (prefers-reduced-motion) { .foo { animation: 1s ease-in; } }',
       fixed:
         '@media screen and (prefers-reduced-motion: reduce) {\n.foo { animation: none;\n}\n} .foo { animation: 1s ease-in; } @media screen and (prefers-reduced-motion) { .foo { animation: 1s ease-in; } }',
       message: messages.expected('.foo'),
