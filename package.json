@@ -9,7 +9,8 @@
   "keywords": [
     "stylelint",
     "stylelint-plugin",
-    "a11y"
+    "a11y",
+    "accessibility"
   ],
   "engines": {
     "node": ">=14"
