@@ -73,11 +73,11 @@ $primary-color: #333;
 
 ## Note
 
-[Similar rule](https://github.com/stylelint/stylelint/blob/master/lib/rules/declaration-property-value-blacklist/README.md) is in [Stylelint](https://github.com/stylelint/stylelint), but it triggers another error message and does not check for `:focus` selector and `border` property.
+[Similar rule](https://github.com/stylelint/stylelint/blob/main/lib/rules/declaration-property-value-disallowed-list/README.md) is in [Stylelint](https://github.com/stylelint/stylelint), but it triggers another error message and does not check for `:focus` selector and `border` property.
 
 ```json
 {
-  "declaration-property-value-blacklist": {
+  "declaration-property-value-disallowed-list": {
     "outline": ["none", "0"]
   }
 }
