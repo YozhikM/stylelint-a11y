@@ -24,7 +24,7 @@ Please refer to [stylelint docs](https://stylelint.io/user-guide/) for the detai
 | :---- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
 |       | [content-property-no-static-value](./src/rules/content-property-no-static-value/README.md) | Disallow unaccessible CSS generated content in pseudo-elements          |
 |       | [font-size-is-readable](./src/rules/font-size-is-readable/README.md)                       | Disallow font sizes less than `15px`                                    |
-|       | [line-height-is-vertical-rhythmed](./src/rules/line-height-is-vertical-rhythmed/README.md) | Disallow not vertical rhythmed `line-height`                            |
+|       | [line-height-is-vertical-rhythm](./src/rules/line-height-is-vertical-rhythm/README.md) | Disallow not vertical rhythm `line-height`                            |
 | ⭐️✒️ | [media-prefers-reduced-motion](./src/rules/media-prefers-reduced-motion/README.md)         | Require certain styles if the animation or transition in media features |
 |       | [media-prefers-color-scheme](./src/rules/media-prefers-color-scheme/README.md)             | Require implementation of certain styles for selectors with colors.     |
 |       | [no-display-none](./src/rules/no-display-none/README.md)                                   | Disallow content hiding with `display: none` property                   |
