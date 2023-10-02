@@ -1,6 +1,6 @@
-# line-height-is-vertical-rhythmed
+# line-height-is-vertical-rhythm
 
-Disallow not vertical rhythmed line-height.
+Disallow not vertical rhythm line-height.
 
 **Sources:**
 

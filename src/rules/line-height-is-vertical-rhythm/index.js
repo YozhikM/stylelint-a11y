@@ -1,10 +1,10 @@
 import { utils } from 'stylelint';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule';
 
-export const ruleName = 'a11y/line-height-is-vertical-rhythmed';
+export const ruleName = 'a11y/line-height-is-vertical-rhythm';
 
 export const messages = utils.ruleMessages(ruleName, {
-  expected: selector => `Expected a vertical rhythmed line-height in ${selector}`,
+  expected: selector => `Expected a vertical rhythm line-height in ${selector}`,
 });
 
 function check(node) {
